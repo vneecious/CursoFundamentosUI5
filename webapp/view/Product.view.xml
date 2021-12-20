@@ -1,0 +1,70 @@
+<mvc:View controllerName="br.gov.bndes.zhrbeneficio.controller.Product" 
+xmlns:mvc="sap.ui.core.mvc" 
+displayBlock="true"
+xmlns:uxap="sap.uxap"
+xmlns="sap.m">
+    <uxap:ObjectPageLayout id="ObjectPageLayout" showFooter="{view>/editable}" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false">
+        <uxap:headerTitle>
+            <uxap:ObjectPageDynamicHeaderTitle>
+                <uxap:expandedHeading>
+                    <Title text="{Name}" wrapping="true" class="sapUiSmallMarginEnd" />
+                </uxap:expandedHeading>
+
+                <uxap:snappedHeading>
+                    <FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
+                        <FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
+                            <Title text="{Name}" wrapping="true" class="sapUiTinyMarginEnd" />
+                        </FlexBox>
+                    </FlexBox>
+                </uxap:snappedHeading>
+                <uxap:actions>
+                    <Button press="onEdit" text="Editar" type="Emphasized" visible="{= !${view>/editable} }" />
+                </uxap:actions>
+            </uxap:ObjectPageDynamicHeaderTitle>
+        </uxap:headerTitle>
+
+        <uxap:headerContent>
+            <FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
+                <VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+                    <Label text="Categoria" />
+                    <Text text="{Category/Name}" />
+                </VBox>
+                 <VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+                    <Label text="Preço" />
+                    <ObjectNumber number="{Price} BRL" emphasized="false" />
+                </VBox>
+            </FlexBox>
+        </uxap:headerContent>
+        <uxap:sections>
+            <uxap:ObjectPageSection title="Dados Gerais">
+                <uxap:ObjectPageSubSection>
+                    <VBox>
+                        <Label text="Nome" labelFor="idName"/>
+                        <Input value="{Name}" id="idName" editable="{view>/editable}" />
+                        <Label text="Descrição" labelFor="idDescription"/>
+                        <Input value="{Description}" id="idDescription" editable="{view>/editable}"/>
+                        <Label text="Data de Lançamento" labelFor="idReleaseDate"/>
+                        <DatePicker dateValue="{ReleaseDate}" displayFormat="dd/MM/yyyy" editable="{view>/editable}" id="idReleaseDate" />
+                        <Label text="Avaliação" labelFor="idRating"/>
+                        <RatingIndicator value="{Rating}" maxValue="5" editable="{view>/editable}" id="idRating"/>
+                    </VBox>
+                </uxap:ObjectPageSubSection>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection title="Dados de Fornecedor">
+                <uxap:ObjectPageSubSection>
+                    <VBox>
+                        <Label text="Nome" labelFor="idSupplierName"/>
+                        <Input value="{Supplier/Name}" id="idSupplierName" editable="{view>/editable}"/>
+                    </VBox>
+                </uxap:ObjectPageSubSection>
+            </uxap:ObjectPageSection>
+        </uxap:sections>
+        <uxap:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button text="Cancelar" press="onCancel" />
+                <Button text="Salvar" press="onSave" type="Emphasized" />
+            </OverflowToolbar>
+        </uxap:footer>
+    </uxap:ObjectPageLayout>
+</mvc:View>

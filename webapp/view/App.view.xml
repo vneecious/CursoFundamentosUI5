@@ -1,0 +1,12 @@
+<mvc:View
+    controllerName="br.gov.bndes.zhrbeneficio.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages/>
+        </App>
+    </Shell>
+</mvc:View>

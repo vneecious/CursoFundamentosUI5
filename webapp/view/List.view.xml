@@ -1,0 +1,63 @@
+<mvc:View
+    controllerName="br.gov.bndes.zhrbeneficio.controller.List"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+>
+
+	<f:DynamicPage id="dynamicPageId"
+				   toggleHeaderOnTitleClick="false">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Produtos"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+
+		<!-- DynamicPage Content -->
+		<f:content>
+			<Table id="productsTable"
+				   inset="false"
+				   items="{/Products}"
+				   class="sapFDynamicPageAlignContent"
+				   width="auto">
+				<headerToolbar>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<OverflowToolbarButton icon="sap-icon://add" type="Transparent" press="onAdd"/>
+						<OverflowToolbarButton icon="sap-icon://sort" type="Transparent" press="onSort"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="12em">
+						<Text text="Produto" />
+					</Column>
+					<Column	hAlign="End">
+						<Text text="Preço" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation" press="onListItemPress">
+						<cells>
+							<ObjectIdentifier title="{Name}" text="{ID}" />
+							<ObjectNumber core:require="{
+                                Currency: 'sap/ui/model/type/Currency'
+                            }"
+									number="{
+										parts:[{path:'Price'},'BRL'],
+										type: 'Currency',
+										formatOptions: {showMeasure: false}
+									}"
+									unit="BRL" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+	</f:DynamicPage>
+
+</mvc:View>
