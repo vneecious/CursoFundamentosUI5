@@ -1,4 +1,4 @@
-<mvc:View controllerName="br.gov.bndes.zhrbeneficio.controller.Product" 
+<mvc:View xmlns:core="sap.ui.core" xmlns:smartform="sap.ui.comp.smartform" xmlns:smartfield="sap.ui.comp.smartfield" controllerName="br.gov.bndes.zhrbeneficio.controller.Product" 
 xmlns:mvc="sap.ui.core.mvc" 
 displayBlock="true"
 xmlns:uxap="sap.uxap"
@@ -41,6 +41,18 @@ xmlns="sap.m">
                     <VBox>
                         <Label text="Nome" labelFor="idName"/>
                         <Input value="{Name}" id="idName" editable="{view>/editable}" />
+                        <Label text="Categoria" labelFor="idCategory"/>
+                        <ComboBox items="{/Categories}" selectedKey="{Category/ID}" visible="{view>/editable}" selectionChange="onCategorySelected">
+                            <items>
+                                <core:ListItem key="{ID}" text="{Name}"/>
+                            </items>
+                        </ComboBox>
+                        <Label text="Fornecedor" labelFor="idSupplier" />
+                        <ComboBox items="{/Suppliers}" selectedKey="{Supplier/ID}" visible="{view>/editable}" selectionChange="onSupplierSelected">
+                            <items>
+                                <core:ListItem key="{ID}" text="{Name}"/>
+                            </items>
+                        </ComboBox>
                         <Label text="Descrição" labelFor="idDescription"/>
                         <Input value="{Description}" id="idDescription" editable="{view>/editable}"/>
                         <Label text="Data de Lançamento" labelFor="idReleaseDate"/>

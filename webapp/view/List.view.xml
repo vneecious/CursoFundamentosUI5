@@ -9,7 +9,6 @@
 
 	<f:DynamicPage id="dynamicPageId"
 				   toggleHeaderOnTitleClick="false">
-		<!-- DynamicPage Title -->
 		<f:title>
 			<f:DynamicPageTitle>
 				<f:heading>
@@ -18,13 +17,14 @@
 			</f:DynamicPageTitle>
 		</f:title>
 
-		<!-- DynamicPage Content -->
 		<f:content>
 			<Table id="productsTable"
 				   inset="false"
 				   items="{/Products}"
 				   class="sapFDynamicPageAlignContent"
-				   width="auto">
+				   width="auto" 
+                   mode="Delete"
+                   delete="onDelete">
 				<headerToolbar>
 					<OverflowToolbar>
 						<ToolbarSpacer/>
@@ -44,15 +44,16 @@
 					<ColumnListItem type="Navigation" press="onListItemPress">
 						<cells>
 							<ObjectIdentifier title="{Name}" text="{ID}" />
-							<ObjectNumber core:require="{
-                                Currency: 'sap/ui/model/type/Currency'
-                            }"
-									number="{
-										parts:[{path:'Price'},'BRL'],
-										type: 'Currency',
-										formatOptions: {showMeasure: false}
-									}"
-									unit="BRL" />
+							<ObjectNumber 
+                                core:require="{
+                                    Currency: 'sap/ui/model/type/Currency'
+                                }"
+								number="{
+								    parts:[{path:'Price'},'BRL'],
+									type: 'Currency',
+									formatOptions: {showMeasure: false}
+								}"
+								unit="BRL" />
 						</cells>
 					</ColumnListItem>
 				</items>

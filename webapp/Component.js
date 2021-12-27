@@ -25,6 +25,12 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
+
+                // Diz ao UI5 que sempre que uma request for feita utilizando o groupId deleteProduct, essa operação
+                //não deverá ser enviada imeditamente ao backend, somente mediante chamada de submitChanges({groupId: "deleteProduct"})
+                var aDeferredGroups = this.getModel().getDeferredGroups();
+                aDeferredGroups.push("deleteProduct");
+                this.getModel().setDeferredGroups(aDeferredGroups);
             }
         });
     }

@@ -11,13 +11,20 @@
     "description": "{{appDescription}}",
     "dataSources": {
       "mainService": {
-        "uri": "/V2/(S(vinicius))/OData/OData.svc/",
+        "uri": "/V2/(S(vinicius3))/OData/OData.svc/",
         "type": "OData",
         "settings": {
-          "annotations": [],
+          "annotations": ["annotations"],
           "localUri": "localService/metadata.xml",
           "odataVersion": "2.0"
         }
+      },
+      "annotations": {
+          "type": "ODataAnnotation",
+          "uri": "annotations/annotation.xml",
+          "settings": {
+              "localUri": "annotations/annotation.xml"
+          }
       }
     }
   },
@@ -38,7 +45,7 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "dependencies": {
       "minUI5Version": "1.71.15",
       "libs": {
